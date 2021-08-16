@@ -1,11 +1,8 @@
 import React from 'react'
 import { Text } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DeviceListScreen() {
   return (
-    <SafeAreaView>
-      <Text>devices</Text>
-    </SafeAreaView>
+    <Text>my devices</Text>
   )
 }
