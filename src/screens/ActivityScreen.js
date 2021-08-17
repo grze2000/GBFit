@@ -1,8 +1,10 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Line, LinearGradient, Stop, Text as SvgText } from 'react-native-svg';
+
 import colors from '@styles/colors';
+import globalStyles from '@styles/styles';
 
 const texts = [
   { text: 'km/h', x: 50, y: 58 },
@@ -23,12 +25,17 @@ const speed = 35
 export default function DeviceListScreen() {
   return (
     <SafeAreaView>
-      <View>
-        <View>
-          <Text>3,85</Text>
-          <Text>Km</Text>
+      <View style={styles.routeInfo}>
+        <View style={styles.routeDistanceContainer}>
+          <Text style={styles.routeDistance}>3,85</Text>
+          <Text style={styles.routeDistanceUnit}>km</Text>
         </View>
-        <Text>10 hr 8 min</Text>
+        <View style={styles.timeInfo}>
+          <Text style={styles.timeInfoVal}>10</Text>
+          <Text style={styles.timeInfoUnit}> hr </Text>
+          <Text style={styles.timeInfoVal}>8</Text>
+          <Text style={styles.timeInfoUnit}> min</Text>
+        </View>
       </View>
       <View>
         <Svg width="100%" height="80%" viewBox="0 0 100 100">
@@ -57,7 +64,6 @@ export default function DeviceListScreen() {
             strokeWidth="5"
             fill="none"
             strokeDasharray={`${speed*212/80}, 283`}
-            // strokeLinecap="round"
             rotation="135"
             origin="50, 50"
           />
@@ -109,3 +115,35 @@ export default function DeviceListScreen() {
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  routeDistanceContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginVertical: 10
+  },
+  routeDistance: {
+    fontSize: 60,
+    fontWeight: 'bold'
+  },
+  routeDistanceUnit: {
+    fontSize: 25,
+    color: colors.textGray,
+    marginLeft: 10,
+    marginBottom: 10
+  },
+  routeInfo: {
+    paddingHorizontal: 40
+  },
+  timeInfo: {
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
+  timeInfoVal: {
+    fontWeight: 'bold',
+    fontSize: 30
+  },
+  timeInfoUnit: {
+    fontSize: 25,
+  }
+})
