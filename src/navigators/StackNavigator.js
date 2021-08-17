@@ -12,7 +12,7 @@ export default function StackNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="My devices" component={DeviceListScreen} />
-      <Stack.Screen name="Add device" component={DeviceSelectScreen} />
+      <Stack.Screen name="Select device" component={DeviceSelectScreen} />
       <Stack.Screen name="Device info" component={DeviceInfoScreen} />
     </Stack.Navigator>
   )
