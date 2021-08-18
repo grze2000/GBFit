@@ -27,11 +27,11 @@ export default function DeviceListScreen() {
     <SafeAreaView style={globalStyles.container}>
       <Text style={styles.title}>Your activity</Text>
       <View style={styles.routeInfo}>
-        <View style={styles.valueBox}>
+        <View style={globalStyles.valueBox}>
           <Text style={styles.routeDistance}>3,85</Text>
           <Text style={styles.routeDistanceUnit}>km</Text>
         </View>
-        <View style={styles.valueBox}>
+        <View style={globalStyles.valueBox}>
           <Text style={styles.timeInfoVal}>10</Text>
           <Text style={styles.timeInfoUnit}> hr </Text>
           <Text style={styles.timeInfoVal}>8</Text>
@@ -114,18 +114,18 @@ export default function DeviceListScreen() {
         </Svg>
       </View>
       <View style={styles.info}>
-        <View style={styles.column}>
-          <Text style={styles.infoTitle}>Avg. Speed</Text>
-          <View style={styles.valueBox}>
-            <Text style={styles.infoValue}>12,5</Text>
-            <Text style={styles.infoUnit}> km/h</Text>
+        <View style={globalStyles.column}>
+          <Text style={globalStyles.infoTitle}>Avg. Speed</Text>
+          <View style={globalStyles.valueBox}>
+            <Text style={globalStyles.infoValue}>12,5</Text>
+            <Text style={globalStyles.infoUnit}> km/h</Text>
           </View>
         </View>
-        <View style={styles.column}>
-        <Text style={styles.infoTitle}>Max Speed</Text>
-          <View style={styles.valueBox}>
-            <Text style={styles.infoValue}>12,5</Text>
-            <Text style={styles.infoUnit}> km/h</Text>
+        <View style={globalStyles.column}>
+        <Text style={globalStyles.infoTitle}>Max Speed</Text>
+          <View style={globalStyles.valueBox}>
+            <Text style={globalStyles.infoValue}>12,5</Text>
+            <Text style={globalStyles.infoUnit}> km/h</Text>
           </View>
         </View>
       </View>
@@ -148,10 +148,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     marginBottom: 20
   },
-  valueBox: {
-    flexDirection: 'row',
-    alignItems: 'flex-end'
-  },
   timeInfoVal: {
     fontWeight: 'bold',
     fontSize: 30
@@ -162,23 +158,6 @@ const styles = StyleSheet.create({
   info: {
     flexGrow: 1,
     flexDirection: 'row'
-  },
-  column: {
-    width: '50%',
-    alignItems: 'center',
-  },
-  infoTitle: {
-    color: colors.textGray,
-    fontSize: 16,
-    marginBottom: 5
-  },
-  infoValue: {
-    fontSize: 28
-  },
-  infoUnit: {
-    color: colors.textGray,
-    marginLeft: 3,
-    fontSize: 16
   },
   title: {
     color: colors.textGray,

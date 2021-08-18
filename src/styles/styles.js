@@ -29,4 +29,26 @@ export default {
     flex: 1,
     padding: 6
   },
+  valueBox: {
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
+  column: {
+    width: '50%',
+    alignItems: 'center',
+  },
+  infoTitle: {
+    color: colors.textGray,
+    fontSize: 16,
+    marginBottom: 5
+  },
+  infoValue: {
+    fontSize: 28
+  },
+  infoUnit: {
+    color: colors.textGray,
+    marginHorizontal: 3,
+    marginBottom: 3,
+    fontSize: 16
+  },
 }
