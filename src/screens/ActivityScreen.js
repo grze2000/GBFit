@@ -24,7 +24,7 @@ const speed = 35
 
 export default function DeviceListScreen() {
   return (
-    <SafeAreaView style={globalStyles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Your activity</Text>
       <View style={styles.routeInfo}>
         <View style={globalStyles.valueBox}>
@@ -134,6 +134,10 @@ export default function DeviceListScreen() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    ...globalStyles.container,
+    justifyContent: 'space-evenly'
+  },
   routeDistance: {
     fontSize: 60,
     fontWeight: 'bold'
@@ -156,8 +160,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   info: {
-    flexGrow: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: 20
   },
   title: {
     color: colors.textGray,
