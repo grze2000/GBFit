@@ -11,12 +11,14 @@ export default function DeviceListScreen({ navigation }) {
   const [devices, setDevices] = useState([{
     id: '123456789',
     name: 'Test name',
-    wheelSize: 26
+    wheelSize: 26,
+    connected: false
   },
   {
     id: '1234563469',
     name: 'Test name 2',
-    wheelSize: 26
+    wheelSize: 26,
+    connected: true
   }])
 
   // useEffect(() => {

@@ -9,5 +9,7 @@ export default {
   textLight: '#ffffff',
   textGray: '#999999',
   textDark: '#000000',
-  error: '#ff0033'
+  error: '#ff0033',
+  warning: '#f0ad4e',
+  success: '#5cb85c'
 }
