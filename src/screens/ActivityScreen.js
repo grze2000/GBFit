@@ -24,13 +24,14 @@ const speed = 35
 
 export default function DeviceListScreen() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={globalStyles.container}>
+      <Text style={styles.title}>Your activity</Text>
       <View style={styles.routeInfo}>
-        <View style={styles.routeDistanceContainer}>
+        <View style={styles.valueBox}>
           <Text style={styles.routeDistance}>3,85</Text>
           <Text style={styles.routeDistanceUnit}>km</Text>
         </View>
-        <View style={styles.timeInfo}>
+        <View style={styles.valueBox}>
           <Text style={styles.timeInfoVal}>10</Text>
           <Text style={styles.timeInfoUnit}> hr </Text>
           <Text style={styles.timeInfoVal}>8</Text>
@@ -38,7 +39,7 @@ export default function DeviceListScreen() {
         </View>
       </View>
       <View>
-        <Svg width="100%" height="80%" viewBox="0 0 100 100">
+        <Svg width="100%" height="400" viewBox="0 0 100 100">
         <Defs>
           <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
             <Stop offset="0" stopColor={colors.primary} stopOpacity="1" />
@@ -112,16 +113,27 @@ export default function DeviceListScreen() {
           />
         </Svg>
       </View>
+      <View style={styles.info}>
+        <View style={styles.column}>
+          <Text style={styles.infoTitle}>Avg. Speed</Text>
+          <View style={styles.valueBox}>
+            <Text style={styles.infoValue}>12,5</Text>
+            <Text style={styles.infoUnit}> km/h</Text>
+          </View>
+        </View>
+        <View style={styles.column}>
+        <Text style={styles.infoTitle}>Max Speed</Text>
+          <View style={styles.valueBox}>
+            <Text style={styles.infoValue}>12,5</Text>
+            <Text style={styles.infoUnit}> km/h</Text>
+          </View>
+        </View>
+      </View>
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-  routeDistanceContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    marginVertical: 10
-  },
   routeDistance: {
     fontSize: 60,
     fontWeight: 'bold'
@@ -133,9 +145,10 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   routeInfo: {
-    paddingHorizontal: 40
+    paddingHorizontal: 40,
+    marginBottom: 20
   },
-  timeInfo: {
+  valueBox: {
     flexDirection: 'row',
     alignItems: 'flex-end'
   },
@@ -145,5 +158,31 @@ const styles = StyleSheet.create({
   },
   timeInfoUnit: {
     fontSize: 25,
+  },
+  info: {
+    flexGrow: 1,
+    flexDirection: 'row'
+  },
+  column: {
+    width: '50%',
+    alignItems: 'center',
+  },
+  infoTitle: {
+    color: colors.textGray,
+    fontSize: 16,
+    marginBottom: 5
+  },
+  infoValue: {
+    fontSize: 28
+  },
+  infoUnit: {
+    color: colors.textGray,
+    marginLeft: 3,
+    fontSize: 16
+  },
+  title: {
+    color: colors.textGray,
+    fontSize: 16,
+    marginLeft: 10
   }
 })
