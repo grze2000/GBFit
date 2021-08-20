@@ -2,12 +2,16 @@ import React, { useState } from 'react'
 import { Pressable, StyleSheet, Text, View, Dimensions } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LineChart } from 'react-native-chart-kit';
+import { useContext } from 'react';
 
 import globalStyles from '@styles/styles';
 import colors from '../styles/colors';
+import BLEContext from '@contexts/BLEContext';
 
 export default function HomeScreen() {
   const [selectedWeek, setSelectedWeek] = useState(4);
+  // const BLEState = useContext(BLEContext);
+  // console.log("🚀 ~ file: HomeScreen.js ~ line 14 ~ HomeScreen ~ BLEState", BLEState)
 
   return (
     <SafeAreaView  style={styles.container}>
@@ -15,6 +19,7 @@ export default function HomeScreen() {
         <View style={styles.totalDistance}>
           <Text style={styles.totalDistanceText}>You have already covered</Text>
           <Text style={styles.totalDistanceValue}>57000 km</Text>
+          {/* <Text>{BLEState?.test}</Text> */}
         </View>
         <View style={styles.col3Container}>
           <View style={styles.col3}>

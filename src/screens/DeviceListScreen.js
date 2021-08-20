@@ -21,13 +21,13 @@ export default function DeviceListScreen({ navigation }) {
     connected: true
   }])
 
-  // useEffect(() => {
-  //   AsyncStorage.getItem('@devices').then(data => {
-  //     if(data) {
-  //       setDevices(data)
-  //     }
-  //   })
-  // }, [])
+  useEffect(() => {
+    AsyncStorage.getItem('@devices').then(data => {
+      if(data) {
+        setDevices(JSON.parse(data));
+      }
+    })
+  }, [])
 
   return (
     <View style={globalStyles.container}>

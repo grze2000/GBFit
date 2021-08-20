@@ -3,14 +3,19 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import TabNavigator from '@navigators/TabNavigator';
+import { BLEContextProvider } from '@contexts/BLEContext';
 
 export default function App() {
+
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <TabNavigator />
-      </NavigationContainer>
+      <BLEContextProvider>
+        <NavigationContainer>
+          <TabNavigator />
+        </NavigationContainer>
+      </BLEContextProvider>
     </SafeAreaProvider>
   );
 }
