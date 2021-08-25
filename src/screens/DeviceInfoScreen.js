@@ -1,11 +1,14 @@
-import React from 'react'
-import { View, Text, TouchableHighlight, StyleSheet, TextInput } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, TouchableHighlight, StyleSheet, TextInput, Alert } from 'react-native'
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { useEffect, useContext } from 'react';
+import { FontAwesome } from '@expo/vector-icons';
 
 import colors from '@styles/colors';
 import globalStyles from '@styles/styles';
+import BLEContext from '@contexts/BLEContext';
 
 const schema = yup.object().shape({
   name: yup.string()
@@ -22,17 +25,37 @@ const schema = yup.object().shape({
 });
 
 export default function DeviceInfoScreen({ route }) {
-
   const { handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
   const onSubmit = data => console.log(data, errors);
+  const { state, dispatch } = useContext(BLEContext);
+  const [connected, setConnected] = useState(false);
+
+  useEffect(() => {
+    if(route.params.item?.id) {
+      state.manager.connectToDevice(route.params.item.id, {autoConnect: true})
+        .then(device => device.discoverAllServicesAndCharacteristics())
+        .then(device => device.characteristicsForService('0000ffe0-0000-1000-8000-00805f9b34fb'))
+        .then(characteristics => {
+          if(characteristics.length) {
+            dispatch({type: 'CONNECT', payload: characteristics[0]});
+            setConnected(true);
+          }
+        }).catch(err => {
+          console.log(err);
+          Alert.alert('Connection error', 'Can not connect to this device', [{text: 'OK'}])
+        });
+    }
+  }, [])
 
   return (
     <View style={globalStyles.container}>
       <View style={styles.formGroup}>
         <Text>Device:</Text>
-        <Text style={styles.textValue} autofocus="true">{ route.params.item?.name } ({ route.params.item?.id })</Text>
+        <Text style={styles.textValue} autofocus="true">{ route.params.item?.name } ({ route.params.item?.id }) &thinsp;
+          { connected ? <FontAwesome name="check" style={styles.icon} color={colors.success} /> : <FontAwesome name="close" style={styles.icon} color={colors.error} /> }
+        </Text>
       </View>
       <View style={styles.formGroup}>
         <Text>Device name: </Text>

@@ -7,7 +7,7 @@ import { BleManager } from 'react-native-ble-plx';
 
 export const initValue = {
   manager: null,
-  test: 'Test string'
+  characteristic: null
 }
 
 export const BLEReducer = (state, action) => {
@@ -34,6 +34,12 @@ export const BLEReducer = (state, action) => {
           state.manager.enable();
         }
       });
+      return state;
+    }
+    case 'CONNECT': {
+      if(state.manager && action.payload) {
+        return {...state, characteristic: action.payload}
+      }
       return state;
     }
     case 'STATUS_CHANGE': {
